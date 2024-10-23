@@ -1,0 +1,43 @@
+﻿@model IEnumerable<WebCityEvents.Models.Customer>
+
+@{
+    ViewData["Title"] = "Клиенты";
+}
+
+<h2>Клиенты</h2>
+
+<table class="table table-bordered">
+    <caption>Список клиентов</caption>
+    <thead>
+        <tr>
+            <th>Имя клиента</th>
+            <th>Данные паспорта</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var customer in Model)
+        {
+            <tr>
+                <td>@customer.FullName</td>
+                <td>@customer.PassportData</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div class="d-flex justify-content-between align-items-center">
+    <span>Страница @ViewBag.CurrentPage из @ViewBag.TotalPages</span>
+    <div>
+        <a asp-action="Index" asp-route-page="@(ViewBag.CurrentPage - 1)"
+           class="btn btn-primary me-2"
+           disabled="@(ViewBag.CurrentPage == 1 ? "disabled" : null)">
+            Предыдущая
+        </a>
+
+        <a asp-action="Index" asp-route-page="@(ViewBag.CurrentPage + 1)"
+           class="btn btn-primary"
+           disabled="@(ViewBag.CurrentPage == ViewBag.TotalPages ? "disabled" : null)">
+            Следующая
+        </a>
+    </div>
+</div>

@@ -1,0 +1,53 @@
+﻿@model IEnumerable<WebCityEvents.Models.TicketOrder>
+
+@{
+    ViewData["Title"] = "Заказы билетов";
+}
+
+<h2>Заказы билетов</h2>
+
+<form method="get" asp-action="Index" class="mb-3">
+    <label for="customerName">Имя клиента:</label>
+    <input type="text" name="customerName" class="form-control d-inline-block w-auto" />
+    <button type="submit" class="btn btn-secondary">Поиск</button>
+</form>
+
+<table class="table table-bordered">
+    <caption>Список заказов билетов</caption>
+    <thead>
+        <tr>
+            <th>Клиент</th>
+            <th>Событие</th>
+            <th>Дата заказа</th>
+            <th>Количество билетов</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var order in Model)
+        {
+            <tr>
+                <td>@(order.Customer?.FullName ?? "Неизвестно")</td>
+                <td>@(order.Event?.EventName ?? "Неизвестно")</td>
+                <td>@order.OrderDate.ToString("dd/MM/yyyy")</td>
+                <td>@order.TicketCount</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div class="d-flex justify-content-between align-items-center">
+    <span>Страница @ViewBag.CurrentPage из @ViewBag.TotalPages</span>
+    <div>
+        <a asp-action="Index" asp-route-page="@(ViewBag.CurrentPage - 1)"
+           class="btn btn-primary me-2"
+           disabled="@(ViewBag.CurrentPage == 1 ? "disabled" : null)">
+            Предыдущая
+        </a>
+
+        <a asp-action="Index" asp-route-page="@(ViewBag.CurrentPage + 1)"
+           class="btn btn-primary"
+           disabled="@(ViewBag.CurrentPage == ViewBag.TotalPages ? "disabled" : null)">
+            Следующая
+        </a>
+    </div>
+</div>
