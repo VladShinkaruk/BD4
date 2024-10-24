@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("WebCityEvents")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c3da6738496f629f6022952d890f8fe788dc20bb")]
 [assembly: System.Reflection.AssemblyProductAttribute("WebCityEvents")]
 [assembly: System.Reflection.AssemblyTitleAttribute("WebCityEvents")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
